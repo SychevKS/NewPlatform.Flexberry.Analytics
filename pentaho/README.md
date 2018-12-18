@@ -65,6 +65,6 @@ updating the image in the repository.
  Initialization of the service occurs within 30-60 seconds.
 
  Stopping the service is provided by the `swarmStop.sh` script:
- `` `
+ ```
  $ swarmStop.sh
  ```
