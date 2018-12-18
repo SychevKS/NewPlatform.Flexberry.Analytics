@@ -33,9 +33,9 @@ If these ports are already occupied in your system, you can redefine the specifi
 ### Getting the image
 
 If you are running the image in `docker compose` mode, you need to first download the image from the repository with the` pull.sh` script:
-`` `
+```
 $ pull.sh
-`` `
+```
 If the image in the repository is updated to use it, you must re-run the command `pull.sh`.
 
 When launching an image in `docker swarm` mode, this step can be skipped, since the image is downloaded automatically at the initial launch and
