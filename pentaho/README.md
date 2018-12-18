@@ -8,10 +8,10 @@ The image provides the ability to run in two main modes:
 
 The `docker-compose` launch mode for multi-container applications provides a convenient launch of an image on a single server, but for a number of Linux distributions it requires the` docker-compose` pre-installation,
 because the command is not part of the standard docker command set.
-The `docker-compose` installation is described on the page [http://docker.crank.ru/docs/docker-compose/install-compose/](http://docker.crank.ru/docs/docker-compose/install- compose /).
+The `docker-compose` installation is described on the page [http://docker.crank.ru/docs/docker-compose/install-compose/](http://docker.crank.ru/docs/docker-compose/install-compose/).
 
 The startup mode in cluster mode provides a convenient launch of an image on a cluster of servers (including on a cluster from a single server), but requires preliminary cluster initialization.
-Cluster initialization is described at [https://docs.docker.com/engine/reference/commandline/swarm_init/](http://docs.docker.com/engine/reference/commandline/swarm_init/).
+Cluster initialization is described at [https://docs.docker.com/engine/reference/commandline/swarm_init/](https://docs.docker.com/engine/reference/commandline/swarm_init/).
 
 Both startup modes use the same configuration file `.env` and the same named volumes.
 Using named volumes ensures that all settings and the current state of `pentaho` are saved when the container is restarted.
