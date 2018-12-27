@@ -1,3 +1,2 @@
 
-. .env
-docker pull flexberry/pentaho$BI_IMAGE_TAG
+docker pull flexberry/flexberry/pentaho-saiku:8.0
