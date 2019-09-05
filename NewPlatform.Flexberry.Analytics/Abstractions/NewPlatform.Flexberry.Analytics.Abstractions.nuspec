@@ -18,13 +18,11 @@
     <copyright>Copyright New Platform Ltd 2019</copyright>
     <tags>Flexberry Analytics Abstractions</tags>
     <dependencies>
-      <group targetFramework=".NETFramework4.5">
-        <dependency id="Newtonsoft.Json" version="11.0.1" />
-      </group>
+      <dependency id="Newtonsoft.Json" version="11.0.1" />
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\Debug\NewPlatform.Flexberry.Analytics.Abstractions.dll" target="lib\net45\NewPlatform.Flexberry.Analytics.Abstractions.dll" />
-    <file src="bin\Debug\NewPlatform.Flexberry.Analytics.Abstractions.xml" target="lib\net45\NewPlatform.Flexberry.Analytics.Abstractions.xml" />
+    <file src="NewPlatform.Flexberry.Analytics.Abstractions.dll" target="lib\net45\NewPlatform.Flexberry.Analytics.Abstractions.dll" />
+    <file src="NewPlatform.Flexberry.Analytics.Abstractions.xml" target="lib\net45\NewPlatform.Flexberry.Analytics.Abstractions.xml" />
   </files>
 </package>
