@@ -4,34 +4,36 @@
     using NewPlatform.Flexberry.Analytics.Abstractions;
     using Newtonsoft.Json.Linq;
     using System;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
     using System.Web.Http;
 
     public class ReportController : ApiController
     {
-        const string reportPathParamName = "reportPath";
+        private const string ReportPathParamName = "reportPath";
 
-        private readonly IReportManager _reportManager;
+        private readonly IReportManager ReportManager;
 
         public ReportController(IReportManager reportManager)
         {
-            _reportManager = reportManager;
+            ReportManager = reportManager;
         }
 
         /// <summary>
         ///     Получает готовый отчет из сервера отчетов с заданными параметрами.
         /// </summary>
         /// <param name="parameters">Параметры отчёта.</param>
+        /// <param name="ct">Маркер отмены.</param>
         [HttpPost]
         [ActionName("getReport")]
         public async Task<IHttpActionResult> GetReportHtml([FromBody]JObject parameters, CancellationToken ct)
         {
             try
             {
-                string reportPath = GetParameterValue(parameters, reportPathParamName);
-                parameters.Remove(reportPathParamName);
-                var result = await _reportManager.GetReportHtml(reportPath, parameters, ct);
+                string reportPath = GetParameterValue(parameters, ReportPathParamName);
+                parameters.Remove(ReportPathParamName);
+                string result = await ReportManager.GetReportHtml(reportPath, parameters, ct);
                 return Ok(result);
             }
             catch (TaskCanceledException tce)
@@ -55,6 +57,7 @@
         ///     Экспортирует отчёт.
         /// </summary>
         /// <param name="parameters">Параметры отчёта.</param>
+        /// <param name="ct">Маркер отмены.</param>
         /// <returns></returns>
         [HttpPost]
         [ActionName("export")]
@@ -62,9 +65,9 @@
         {
             try
             {
-                string reportPath = GetParameterValue(parameters, reportPathParamName);
-                parameters.Remove(reportPathParamName);
-                var result = await _reportManager.ExportReport(reportPath, parameters, ct);
+                string reportPath = GetParameterValue(parameters, ReportPathParamName);
+                parameters.Remove(ReportPathParamName);
+                HttpResponseMessage result = await ReportManager.ExportReport(reportPath, parameters, ct);
                 return ResponseMessage(result);
             }
             catch (TaskCanceledException tce)
@@ -88,15 +91,16 @@
         ///     Получает количество страниц в отчёте.
         /// </summary>
         /// <param name="parameters">Параметры отчёта.</param>
+        /// <param name="ct">Маркер отмены.</param>
         [HttpPost]
         [ActionName("getPageCount")]
         public async Task<IHttpActionResult> GetReportPageCount([FromBody]JObject parameters, CancellationToken ct)
         {
             try
             {
-                string reportPath = GetParameterValue(parameters, reportPathParamName);
-                parameters.Remove(reportPathParamName);
-                var result = await _reportManager.GetReportPageCount(reportPath, parameters, ct);
+                string reportPath = GetParameterValue(parameters, ReportPathParamName);
+                parameters.Remove(ReportPathParamName);
+                int result = await ReportManager.GetReportPageCount(reportPath, parameters, ct);
                 return Ok(result);
             }
             catch (TaskCanceledException tce)
