@@ -1,8 +1,8 @@
-using NewPlatform.Flexberry.Analytics.WebAPI;
-using System.Web.Http;
-
 namespace NewPlatform.Flexberry.Analytics.WebApiSample
 {
+    using System.Web.Http;
+    using NewPlatform.Flexberry.Analytics.WebAPI;
+
     public class WebApiApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
