@@ -11,9 +11,9 @@
     <PackageId>NewPlatform.Flexberry.Analytics.Abstractions</PackageId>
     <PackageLicenseUrl>http://flexberry.ru/License-FlexberryOrm-Runtime</PackageLicenseUrl>
     <PackageProjectUrl>https://flexberry.net/ru/developers-flexberry-orm</PackageProjectUrl>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <PackageReleaseNotes>
-      1. Added netstandard2.0 support and multitarget.
-      2. [BREAKING CHANGE] Changed IReportManager.ExportReport return type.
+      See https://github.com/Flexberry/NewPlatform.Flexberry.Analytics/tree/develop/NewPlatform.Flexberry.Analytics/Abstractions/CHANGELOG.MD.
     </PackageReleaseNotes>
     <PackageTags>Flexberry Analytics Abstractions</PackageTags>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
