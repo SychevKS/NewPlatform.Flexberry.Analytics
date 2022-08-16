@@ -1,66 +1,30 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{A4850BD2-3CE6-4BB1-B0AD-7E26A9AE7F16}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NewPlatform.Flexberry.Analytics.Abstractions</RootNamespace>
-    <AssemblyName>NewPlatform.Flexberry.Analytics.Abstractions</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\NewPlatform.Flexberry.Analytics.Abstractions.xml</DocumentationFile>
-    <CodeAnalysisRuleSet>..\Flexberry.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\NewPlatform.Flexberry.Analytics.Abstractions.xml</DocumentationFile>
-    <CodeAnalysisRuleSet>..\Flexberry.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
+    <TargetFrameworks>net45;netstandard2.0</TargetFrameworks>
+    <AssemblyTitle>NewPlatform.Flexberry.Analytics.Abstractions</AssemblyTitle>
+    <Product>NewPlatform.Flexberry.Analytics.Abstractions</Product>
+    <Description>Flexberry Analytics Abstractions package.</Description>    
+    <Version>2.0.0-beta01</Version>
     <AssemblyOriginatorKeyFile>NewPlatform.Flexberry.Analytics.Abstractions.snk</AssemblyOriginatorKeyFile>
+    <PackageIconUrl>https://flexberry.net/img/logo-color.png</PackageIconUrl>
+    <PackageId>NewPlatform.Flexberry.Analytics.Abstractions</PackageId>
+    <PackageLicenseUrl>http://flexberry.ru/License-FlexberryOrm-Runtime</PackageLicenseUrl>
+    <PackageProjectUrl>https://flexberry.net/ru/developers-flexberry-orm</PackageProjectUrl>
+    <PackageReleaseNotes>
+      1. Added netstandard2.0 support and multitarget.
+      2. [BREAKING CHANGE] Changed IReportManager.ExportReport return type.
+    </PackageReleaseNotes>
+    <PackageTags>Flexberry Analytics Abstractions</PackageTags>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
+  
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' != 'netstandard2.0' ">
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="IReportManager.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="NewPlatform.Flexberry.Analytics.Abstractions.nuspec" />
-    <None Include="NewPlatform.Flexberry.Analytics.Abstractions.snk" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -7,8 +7,20 @@
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
+#if NETFRAMEWORK
     using System.Web.Http;
+#endif
 
+#if NETCOREAPP || NETSTANDARD
+    using Microsoft.AspNetCore.Mvc;
+
+    using ApiController = Microsoft.AspNetCore.Mvc.ControllerBase;
+    using FromUri = Microsoft.AspNetCore.Mvc.FromQueryAttribute;
+    using IHttpActionResult = Microsoft.AspNetCore.Mvc.IActionResult;
+
+    [Route("reportapi/[controller]/[action]")]
+    [ApiController]
+#endif
     public class ReportController : ApiController
     {
         private const string ReportPathParamName = "reportPath";
@@ -27,7 +39,7 @@
         /// <param name="ct">Маркер отмены.</param>
         [HttpPost]
         [ActionName("getReport")]
-        public async Task<IHttpActionResult> GetReportHtml([FromBody]JObject parameters, CancellationToken ct)
+        public async Task<IHttpActionResult> GetReportHtml([FromBody] JObject parameters, CancellationToken ct)
         {
             try
             {
@@ -49,7 +61,11 @@
             catch (Exception e)
             {
                 LogService.LogError("Исключение при построении отчёта.", e);
+#if NETFRAMEWORK
                 return InternalServerError(e);
+#elif NETCOREAPP || NETSTANDARD
+                throw;
+#endif
             }
         }
 
@@ -61,14 +77,21 @@
         /// <returns></returns>
         [HttpPost]
         [ActionName("export")]
-        public async Task<IHttpActionResult> ExportReport([FromBody]JObject parameters, CancellationToken ct)
+        public async Task<IHttpActionResult> ExportReport([FromBody] JObject parameters, CancellationToken ct)
         {
             try
             {
                 string reportPath = GetParameterValue(parameters, ReportPathParamName);
                 parameters.Remove(ReportPathParamName);
-                HttpResponseMessage result = await ReportManager.ExportReport(reportPath, parameters, ct);
-                return ResponseMessage(result);
+                var reportBytes = await ReportManager.ExportReport(reportPath, parameters, ct);
+#if NETFRAMEWORK
+                return ResponseMessage(new HttpResponseMessage(System.Net.HttpStatusCode.OK)
+                {
+                    Content = new ByteArrayContent(reportBytes),
+                });
+#elif NETCOREAPP || NETSTANDARD
+                return new FileContentResult(reportBytes, "application/octet-stream");
+#endif
             }
             catch (TaskCanceledException tce)
             {
@@ -83,7 +106,11 @@
             catch (Exception ex)
             {
                 LogService.LogError("Исключение при экспорте отчёта.", ex);
+#if NETFRAMEWORK
                 return InternalServerError(ex);
+#elif NETCOREAPP || NETSTANDARD
+                throw;
+#endif
             }
         }
 
@@ -94,7 +121,7 @@
         /// <param name="ct">Маркер отмены.</param>
         [HttpPost]
         [ActionName("getPageCount")]
-        public async Task<IHttpActionResult> GetReportPageCount([FromBody]JObject parameters, CancellationToken ct)
+        public async Task<IHttpActionResult> GetReportPageCount([FromBody] JObject parameters, CancellationToken ct)
         {
             try
             {
@@ -116,7 +143,11 @@
             catch (Exception e)
             {
                 LogService.LogError("Исключение при получении количества страниц отчёта.", e);
+#if NETFRAMEWORK
                 return InternalServerError(e);
+#elif NETCOREAPP || NETSTANDARD
+                throw;
+#endif
             }
         }
 

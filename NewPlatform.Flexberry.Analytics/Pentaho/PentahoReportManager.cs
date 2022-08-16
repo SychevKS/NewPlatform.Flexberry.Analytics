@@ -82,7 +82,7 @@
         }
 
         /// <inheritdoc />
-        public async Task<HttpResponseMessage> ExportReport(string reportPath, JObject parameters, CancellationToken ct)
+        public async Task<byte[]> ExportReport(string reportPath, JObject parameters, CancellationToken ct)
         {
             if (ct.IsCancellationRequested)
             {
@@ -98,12 +98,7 @@
 
             byte[] resultData = await GetReportData(contentType, parameters, response);
 
-            var result = new HttpResponseMessage(HttpStatusCode.OK)
-            {
-                Content = new ByteArrayContent(resultData),
-            };
-
-            return result;
+            return resultData;
         }
 
         /// <inheritdoc />

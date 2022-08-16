@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28922.388
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewPlatform.Flexberry.Analytics.Abstractions", "Abstractions\NewPlatform.Flexberry.Analytics.Abstractions.csproj", "{A4850BD2-3CE6-4BB1-B0AD-7E26A9AE7F16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewPlatform.Flexberry.Analytics.Abstractions", "Abstractions\NewPlatform.Flexberry.Analytics.Abstractions.csproj", "{A4850BD2-3CE6-4BB1-B0AD-7E26A9AE7F16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewPlatform.Flexberry.Analytics.Pentaho", "Pentaho\NewPlatform.Flexberry.Analytics.Pentaho.csproj", "{9E941213-D6A7-4063-B77F-FA2CD6B58F14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewPlatform.Flexberry.Analytics.Pentaho", "Pentaho\NewPlatform.Flexberry.Analytics.Pentaho.csproj", "{9E941213-D6A7-4063-B77F-FA2CD6B58F14}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewPlatform.Flexberry.Analytics.WebApiSample", "WebApiSample\NewPlatform.Flexberry.Analytics.WebApiSample.csproj", "{EBDA6828-35E2-4C0E-90EA-1DA1ADFA2B24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewPlatform.Flexberry.Analytics.WebAPI", "WebAPI\NewPlatform.Flexberry.Analytics.WebAPI.csproj", "{F4479CFC-AF4E-46A3-A720-23B3EDDAB100}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewPlatform.Flexberry.Analytics.WebAPI", "WebAPI\NewPlatform.Flexberry.Analytics.WebAPI.csproj", "{F4479CFC-AF4E-46A3-A720-23B3EDDAB100}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OpenSource", "OpenSource", "{CA99A007-C6B7-4841-ABB4-E6392458321F}"
 	ProjectSection(SolutionItems) = preProject
@@ -17,9 +17,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OpenSource", "OpenSource", 
 		..\.gitignore = ..\.gitignore
 		..\.travis.yml = ..\.travis.yml
 		..\CHANGELOG.md = ..\CHANGELOG.md
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+		Flexberry.ruleset = Flexberry.ruleset
 		..\LICENSE = ..\LICENSE
 		..\README.md = ..\README.md
+		stylecop.json = stylecop.json
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewPlatform.Flexberry.Analytics.AspNetCoreSample", "AspNetCoreSample\NewPlatform.Flexberry.Analytics.AspNetCoreSample.csproj", "{36763B10-C863-499D-9443-58B9C65FF744}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +49,10 @@ Global
 		{F4479CFC-AF4E-46A3-A720-23B3EDDAB100}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4479CFC-AF4E-46A3-A720-23B3EDDAB100}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4479CFC-AF4E-46A3-A720-23B3EDDAB100}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36763B10-C863-499D-9443-58B9C65FF744}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36763B10-C863-499D-9443-58B9C65FF744}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36763B10-C863-499D-9443-58B9C65FF744}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36763B10-C863-499D-9443-58B9C65FF744}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

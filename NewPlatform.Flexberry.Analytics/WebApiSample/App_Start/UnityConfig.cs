@@ -1,9 +1,9 @@
 namespace NewPlatform.Flexberry.Analytics.WebApiSample
 {
-    using NewPlatform.Flexberry.Analytics.Abstractions;
-    using NewPlatform.Flexberry.Analytics.Pentaho;
     using System;
     using System.Configuration;
+    using NewPlatform.Flexberry.Analytics.Abstractions;
+    using NewPlatform.Flexberry.Analytics.Pentaho;
     using Unity;
     using Unity.Injection;
 
@@ -12,7 +12,6 @@ namespace NewPlatform.Flexberry.Analytics.WebApiSample
     /// </summary>
     public static class UnityConfig
     {
-        #region Unity Container
         private static Lazy<IUnityContainer> container =
           new Lazy<IUnityContainer>(() =>
           {
@@ -25,7 +24,6 @@ namespace NewPlatform.Flexberry.Analytics.WebApiSample
         /// Configured Unity Container.
         /// </summary>
         public static IUnityContainer Container => container.Value;
-        #endregion
 
         /// <summary>
         /// Registers the type mappings with the Unity container.
@@ -48,11 +46,13 @@ namespace NewPlatform.Flexberry.Analytics.WebApiSample
             int timeout = 0;
             int.TryParse(ConfigurationManager.AppSettings["DefaultTimeout"], out timeout);
 
-            container.RegisterType<IReportManager, PentahoReportManager>(new InjectionConstructor(new object[] 
-                    { ConfigurationManager.AppSettings["ReportServiceEndpoint"]
-                        , ConfigurationManager.AppSettings["PentahoReportLogin"]
-                        , ConfigurationManager.AppSettings["PentahoReportPassword"]
-                        , timeout }));
+            container.RegisterType<IReportManager, PentahoReportManager>(new InjectionConstructor(new object[]
+                    {
+                        ConfigurationManager.AppSettings["ReportServiceEndpoint"],
+                        ConfigurationManager.AppSettings["PentahoReportLogin"],
+                        ConfigurationManager.AppSettings["PentahoReportPassword"],
+                        timeout,
+                    }));
         }
     }
 }

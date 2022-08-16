@@ -1,85 +1,47 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F4479CFC-AF4E-46A3-A720-23B3EDDAB100}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NewPlatform.Flexberry.Analytics.WebAPI</RootNamespace>
-    <AssemblyName>NewPlatform.Flexberry.Analytics.WebAPI</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\NewPlatform.Flexberry.Analytics.WebAPI.xml</DocumentationFile>
-    <CodeAnalysisRuleSet>..\Flexberry.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\NewPlatform.Flexberry.Analytics.WebAPI.xml</DocumentationFile>
-    <CodeAnalysisRuleSet>..\Flexberry.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
+    <TargetFrameworks>net45;netcoreapp3.1;netstandard2.0</TargetFrameworks>
+    <AssemblyTitle>NewPlatform.Flexberry.Analytics.WebAPI</AssemblyTitle>
     <AssemblyOriginatorKeyFile>NewPlatform.Flexberry.Analytics.WebAPI.snk</AssemblyOriginatorKeyFile>
+    <Product>NewPlatform.Flexberry.Analytics.WebAPI</Product>
+    <Description>Flexberry Analytics WebApi package.</Description>
+    <Version>2.0.0-beta01</Version>
+    <PackageIconUrl>https://flexberry.net/img/logo-color.png</PackageIconUrl>
+    <PackageId>NewPlatform.Flexberry.Analytics.WebApi</PackageId>
+    <PackageLicenseUrl>http://flexberry.ru/License-FlexberryOrm-Runtime</PackageLicenseUrl>
+    <PackageProjectUrl>http://flexberry.net/FlexberryORM</PackageProjectUrl>
+    <PackageReleaseNotes>
+      1. Added netstandard2.0 support and multitarget
+      2. Updated Newtonsoft.Json to 13.0.1
+    </PackageReleaseNotes>
+    <PackageTags>Flexberry Analytics WebApi</PackageTags>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
+  
   <ItemGroup>
-    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="LogService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1237387dc1b896f5, processorArchitecture=MSIL">
-      <HintPath>..\packages\NewPlatform.Flexberry.LogService.1.1.0\lib\net45\LogService.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
+    <PackageReference Include="log4net" Version="2.0.12" />
+    <PackageReference Include="NewPlatform.Flexberry.LogService" Version="2.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+  
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
     <Reference Include="Microsoft.CSharp" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core" version="5.2.3" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
-    </Reference>
   </ItemGroup>
+  
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' ">
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.28" />
+  </ItemGroup>
+  
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+  </ItemGroup>
+  
   <ItemGroup>
-    <Compile Include="ApiConfig\ReportApiConfig.cs" />
-    <Compile Include="Controllers\ReportController.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <ProjectReference Include="..\Abstractions\NewPlatform.Flexberry.Analytics.Abstractions.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Abstractions\NewPlatform.Flexberry.Analytics.Abstractions.csproj">
-      <Project>{a4850bd2-3ce6-4bb1-b0ad-7e26a9ae7f16}</Project>
-      <Name>NewPlatform.Flexberry.Analytics.Abstractions</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="NewPlatform.Flexberry.Analytics.WebAPI.nuspec" />
-    <None Include="NewPlatform.Flexberry.Analytics.WebAPI.snk" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  
 </Project>
