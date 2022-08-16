@@ -1,4 +1,4 @@
-# NewPlatform.Flexberry.Analytics Changelog
+# NewPlatform.Flexberry.Analytics.WebAPI Changelog
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
@@ -6,13 +6,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 * Netstandard2.0 support
-* ASP.NET Core sample project
-* Directory.Build.props and .targets
-* StyleCop and NetAnalyzers
 
 ### Changed
-* IReportManager.ExportReport return type to byte[]
 * Updated Newtonsoft.Json to 13.0.1
+* Updated NewPlatform.Flexberry.LogService to 2.0.0
 
 ### Deprecated
 

@@ -4,6 +4,7 @@
     <TargetFrameworks>net45;netstandard2.0</TargetFrameworks>
     <AssemblyTitle>NewPlatform.Flexberry.Analytics.Pentaho</AssemblyTitle>
     <AssemblyOriginatorKeyFile>NewPlatform.Flexberry.Analytics.Pentaho.snk</AssemblyOriginatorKeyFile>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <Product>NewPlatform.Flexberry.Analytics.Pentaho</Product>
     <Description>Flexberry Analytics Pentaho package.</Description>
     <Version>2.0.0-beta01</Version>
@@ -12,14 +13,13 @@
     <PackageLicenseUrl>http://flexberry.ru/License-FlexberryOrm-Runtime</PackageLicenseUrl>
     <PackageProjectUrl>http://flexberry.net/FlexberryORM</PackageProjectUrl>
     <PackageReleaseNotes>
-      1. Added netstandard2.0 support and multitarget.
-      2. [BREAKING CHANGE] Changed IReportManager.ExportReport return type.
+      See https://github.com/Flexberry/NewPlatform.Flexberry.Analytics/tree/develop/NewPlatform.Flexberry.Analytics/Pentaho/CHANGELOG.MD.
     </PackageReleaseNotes>
     <PackageTags>Flexberry Analytics Pentaho</PackageTags>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' != 'netstandard2.0' ">
     <Reference Include="Microsoft.CSharp" />
