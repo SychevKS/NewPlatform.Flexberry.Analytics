@@ -8,6 +8,7 @@
     <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)\Flexberry.ruleset</CodeAnalysisRuleSet>
     <Copyright>Copyright New Platform Ltd 2019-2022</Copyright>
     <Authors>New Platform Ltd</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
 </Project>
