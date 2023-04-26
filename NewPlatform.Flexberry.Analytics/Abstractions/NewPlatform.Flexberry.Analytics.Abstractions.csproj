@@ -5,7 +5,7 @@
     <AssemblyTitle>NewPlatform.Flexberry.Analytics.Abstractions</AssemblyTitle>
     <Product>NewPlatform.Flexberry.Analytics.Abstractions</Product>
     <Description>Flexberry Analytics Abstractions package.</Description>    
-    <Version>2.0.0-beta01</Version>
+    <Version>2.0.0-beta02</Version>
     <AssemblyOriginatorKeyFile>NewPlatform.Flexberry.Analytics.Abstractions.snk</AssemblyOriginatorKeyFile>
     <PackageIconUrl>https://flexberry.net/img/logo-color.png</PackageIconUrl>
     <PackageId>NewPlatform.Flexberry.Analytics.Abstractions</PackageId>

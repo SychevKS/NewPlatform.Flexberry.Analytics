@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.0.0-beta02]
+
+### Changed
+* Report controller returned type
+
 ## [2.0.0-beta01]
 
 ### Added
