@@ -46,7 +46,13 @@
                 string reportPath = GetParameterValue(parameters, ReportPathParamName);
                 parameters.Remove(ReportPathParamName);
                 string result = await ReportManager.GetReportHtml(reportPath, parameters, ct);
+
+                // Для NETFRAMEWORK тип OkNegotiatedContentResult, для NETSTANDARD тип OkObjectResult - оба создаются через Ok, для NETCOREAPP тип JsonResult
+#if NETFRAMEWORK || NETSTANDARD
                 return Ok(result);
+#elif NETCOREAPP
+                return new JsonResult(result);
+#endif
             }
             catch (TaskCanceledException tce)
             {
