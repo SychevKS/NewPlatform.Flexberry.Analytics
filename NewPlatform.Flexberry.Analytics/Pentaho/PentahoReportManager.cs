@@ -6,6 +6,7 @@
     using System.Collections.Generic;
     using System.Net;
     using System.Net.Http;
+    using System.Net.Http.Headers;
     using System.Text;
     using System.Text.RegularExpressions;
     using System.Threading;
@@ -42,16 +43,14 @@
                 throw new ArgumentNullException("Пароль для подключения к системе отчетов.", "Пароль для подключения к системе отчетов не может быть пустым.");
             }
 
-            var handler = new HttpClientHandler
-            {
-                Credentials = new NetworkCredential(login, password)
-            };
-
-            PentahoHttpClient = new HttpClient(handler)
+            PentahoHttpClient = new HttpClient()
             {
                 BaseAddress = new Uri(reportServiceEndpoint),
                 Timeout = timeout > 0 ? TimeSpan.FromSeconds(timeout) : Timeout.InfiniteTimeSpan
             };
+
+            PentahoHttpClient.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes($"{login}:{password}")));
         }
 
         /// <inheritdoc />
